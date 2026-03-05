@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片展示 - 宝可梦游戏攻略</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎮 宝可梦游戏攻略</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索游戏内容..." class="search-input">
+                <button class="search-btn" onclick="performSearch()">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="game-data.html" class="nav-link">游戏数据</a></li>
+                <li><a href="habitat-recipes.html" class="nav-link">栖息地配方</a></li>
+                <li><a href="gallery.html" class="nav-link active">图片展示</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <section class="data-section" id="intro">
+                <h2>🖼️ 游戏图片展示</h2>
+                <p>这里展示了游戏中的各种精美图片，包括游戏截图、地图、角色立绘等。点击图片可以查看大图。</p>
+            </section>
+
+            <section class="data-section" id="screenshots">
+                <h2>📸 游戏截图</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ff6b6b/ffffff?text=游戏截图1', '游戏战斗场景')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ff6b6b, #4ecdc4); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">游戏战斗场景</div>
+                        <div class="gallery-caption">游戏战斗场景</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/4ecdc4/ffffff?text=栖息地建设', '栖息地建设')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4ecdc4, #ffe66d); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">栖息地建设</div>
+                        <div class="gallery-caption">栖息地建设</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ffe66d/ffffff?text=宝可梦捕捉', '宝可梦捕捉')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ffe66d, #ff6b6b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">宝可梦捕捉</div>
+                        <div class="gallery-caption">宝可梦捕捉</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/2c3e50/ffffff?text=城镇探索', '城镇探索')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2c3e50, #4ecdc4); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">城镇探索</div>
+                        <div class="gallery-caption">城镇探索</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ff6b6b/ffffff?text=道具使用', '道具使用')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ff6b6b, #ffe66d); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">道具使用</div>
+                        <div class="gallery-caption">道具使用</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/4ecdc4/ffffff?text=任务完成', '任务完成')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4ecdc4, #2c3e50); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">任务完成</div>
+                        <div class="gallery-caption">任务完成</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="data-section" id="maps">
+                <h2>🗺️ 地图展示</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/2c3e50/ffffff?text=世界地图', '世界地图')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2c3e50, #ff6b6b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">世界地图</div>
+                        <div class="gallery-caption">世界地图</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/4ecdc4/ffffff?text=森林区域', '森林区域')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4ecdc4, #ffe66d); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">森林区域</div>
+                        <div class="gallery-caption">森林区域</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ffe66d/ffffff?text=海洋区域', '海洋区域')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ffe66d, #ff6b6b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">海洋区域</div>
+                        <div class="gallery-caption">海洋区域</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ff6b6b/ffffff?text=火山区域', '火山区域')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ff6b6b, #2c3e50); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">火山区域</div>
+                        <div class="gallery-caption">火山区域</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="data-section" id="characters">
+                <h2>👤 角色立绘</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ff6b6b/ffffff?text=皮卡丘', '皮卡丘')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ff6b6b, #ffe66d); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">⚡ 皮卡丘</div>
+                        <div class="gallery-caption">皮卡丘</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/4ecdc4/ffffff?text=小火龙', '小火龙')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4ecdc4, #ff6b6b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">🔥 小火龙</div>
+                        <div class="gallery-caption">小火龙</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ffe66d/ffffff?text=杰尼龟', '杰尼龟')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ffe66d, #4ecdc4); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">💧 杰尼龟</div>
+                        <div class="gallery-caption">杰尼龟</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/2c3e50/ffffff?text=妙蛙种子', '妙蛙种子')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2c3e50, #ffe66d); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">🌿 妙蛙种子</div>
+                        <div class="gallery-caption">妙蛙种子</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ff6b6b/ffffff?text=伊布', '伊布')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ff6b6b, #2c3e50); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">🦊 伊布</div>
+                        <div class="gallery-caption">伊布</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/4ecdc4/ffffff?text=超梦', '超梦')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4ecdc4, #ff6b6b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">🧠 超梦</div>
+                        <div class="gallery-caption">超梦</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="data-section" id="items">
+                <h2>🎒 道具图片</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ff6b6b/ffffff?text=精灵球', '精灵球')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ff6b6b, #ffe66d); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">🔴 精灵球</div>
+                        <div class="gallery-caption">精灵球</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/4ecdc4/ffffff?text=伤药', '伤药')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4ecdc4, #ff6b6b); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">💊 伤药</div>
+                        <div class="gallery-caption">伤药</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/ffe66d/ffffff?text=好伤药', '好伤药')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ffe66d, #4ecdc4); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">💊 好伤药</div>
+                        <div class="gallery-caption">好伤药</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x450/2c3e50/ffffff?text=超级伤药', '超级伤药')">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2c3e50, #ffe66d); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">💊 超级伤药</div>
+                        <div class="gallery-caption">超级伤药</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 宝可梦游戏攻略文档 | 本地访问版本</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宝可梦游戏攻略文档</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎮 宝可梦游戏攻略</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索游戏内容..." class="search-input">
+                <button class="search-btn" onclick="performSearch()">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link active">首页</a></li>
+                <li><a href="game-data.html" class="nav-link">游戏数据</a></li>
+                <li><a href="habitat-recipes.html" class="nav-link">栖息地配方</a></li>
+                <li><a href="gallery.html" class="nav-link">图片展示</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <section class="hero">
+                <h2>欢迎来到宝可梦游戏攻略文档</h2>
+                <p>这里汇集了宝可梦游戏的各种攻略、数据和配方信息</p>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>游戏数据</h3>
+                    <p>查看宝可梦的基础数据、属性、技能等详细信息</p>
+                    <a href="game-data.html" class="btn">查看数据 →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>栖息地配方</h3>
+                    <p>了解如何通过家具摆放创建栖息地并产出宝可梦</p>
+                    <a href="habitat-recipes.html" class="btn">查看配方 →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>图片展示</h3>
+                    <p>浏览游戏截图、地图、角色立绘等精美图片</p>
+                    <a href="gallery.html" class="btn">查看图片 →</a>
+                </div>
+            </section>
+
+            <section class="quick-links">
+                <h3>快速链接</h3>
+                <div class="quick-links-grid">
+                    <a href="game-data.html#pokemon-list" class="quick-link">宝可梦图鉴</a>
+                    <a href="game-data.html#items" class="quick-link">道具列表</a>
+                    <a href="habitat-recipes.html#basic" class="quick-link">基础栖息地</a>
+                    <a href="habitat-recipes.html#advanced" class="quick-link">高级栖息地</a>
+                    <a href="gallery.html#screenshots" class="quick-link">游戏截图</a>
+                    <a href="gallery.html#maps" class="quick-link">地图展示</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 宝可梦游戏攻略文档 | 本地访问版本</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

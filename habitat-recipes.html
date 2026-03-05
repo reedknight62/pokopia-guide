@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栖息地配方 - 宝可梦游戏攻略</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎮 宝可梦游戏攻略</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索游戏内容..." class="search-input">
+                <button class="search-btn" onclick="performSearch()">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="game-data.html" class="nav-link">游戏数据</a></li>
+                <li><a href="habitat-recipes.html" class="nav-link active">栖息地配方</a></li>
+                <li><a href="gallery.html" class="nav-link">图片展示</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <section class="data-section" id="intro">
+                <h2>🏠 栖息地配方指南</h2>
+                <p>通过摆放不同的家具和装饰品，可以创建各种栖息地，吸引不同类型的宝可梦出现。以下是详细的配方指南。</p>
+            </section>
+
+            <section class="data-section" id="basic">
+                <h2>🌱 基础栖息地配方</h2>
+                
+                <div class="recipe-card" id="1">
+                    <h3>🌲 森林栖息地</h3>
+                    <p><strong>描述:</strong> 适合草属性和虫属性宝可梦的森林环境</p>
+                    <div class="recipe-items">
+                        <span class="recipe-item">🌳 树木 x5</span>
+                        <span class="recipe-item">🌿 草地 x10</span>
+                        <span class="recipe-item">🌸 花朵 x3</span>
+                    </div>
+                    <div class="recipe-output">
+                        <strong>🎁 产出宝可梦:</strong> 绿毛虫、独角虫、派拉斯
+                    </div>
+                    <button class="btn" style="margin-top: 15px;" onclick="toggleRecipeDetails(1)" id="recipe-btn-1">查看详情 ▼</button>
+                    <div id="recipe-details-1" style="display: none; margin-top: 15px;">
+                        <p><strong>摆放建议:</strong> 将树木分散摆放，草地作为基础地面，花朵点缀其中</p>
+                        <p><strong>稀有度:</strong> ⭐⭐</p>
+                        <p><strong>维护成本:</strong> 低</p>
+                    </div>
+                </div>
+
+                <div class="recipe-card" id="2">
+                    <h3>🌊 海洋栖息地</h3>
+                    <p><strong>描述:</strong> 适合水属性宝可梦的海洋环境</p>
+                    <div class="recipe-items">
+                        <span class="recipe-item">💧 水池 x1</span>
+                        <span class="recipe-item">🌱 水草 x5</span>
+                        <span class="recipe-item">🪨 石头 x3</span>
+                    </div>
+                    <div class="recipe-output">
+                        <strong>🎁 产出宝可梦:</strong> 鲤鱼王、角金鱼、蚊香蝌蚪
+                    </div>
+                    <button class="btn" style="margin-top: 15px;" onclick="toggleRecipeDetails(2)" id="recipe-btn-2">查看详情 ▼</button>
+                    <div id="recipe-details-2" style="display: none; margin-top: 15px;">
+                        <p><strong>摆放建议:</strong> 水池作为中心，周围布置水草和石头营造自然感</p>
+                        <p><strong>稀有度:</strong> ⭐⭐⭐</p>
+                        <p><strong>维护成本:</strong> 中</p>
+                    </div>
+                </div>
+
+                <div class="recipe-card" id="3">
+                    <h3>🌋 火山栖息地</h3>
+                    <p><strong>描述:</strong> 适合火属性和岩石属性宝可梦的火山环境</p>
+                    <div class="recipe-items">
+                        <span class="recipe-item">🔥 熔岩 x3</span>
+                        <span class="recipe-item">🪨 岩石 x5</span>
+                        <span class="recipe-item">🔦 火把 x2</span>
+                    </div>
+                    <div class="recipe-output">
+                        <strong>🎁 产出宝可梦:</strong> 小火龙、小拳石、瓦斯弹
+                    </div>
+                    <button class="btn" style="margin-top: 15px;" onclick="toggleRecipeDetails(3)" id="recipe-btn-3">查看详情 ▼</button>
+                    <div id="recipe-details-3" style="display: none; margin-top: 15px;">
+                        <p><strong>摆放建议:</strong> 熔岩和岩石交错摆放，火把增加氛围</p>
+                        <p><strong>稀有度:</strong> ⭐⭐⭐⭐</p>
+                        <p><strong>维护成本:</strong> 高</p>
+                    </div>
+                </div>
+
+                <div class="recipe-card" id="4">
+                    <h3>🏙️ 城市栖息地</h3>
+                    <p><strong>描述:</strong> 适合一般属性和电属性宝可梦的城市环境</p>
+                    <div class="recipe-items">
+                        <span class="recipe-item">🏢 建筑物 x2</span>
+                        <span class="recipe-item">💡 路灯 x4</span>
+                        <span class="recipe-item">🪑 长椅 x3</span>
+                    </div>
+                    <div class="recipe-output">
+                        <strong>🎁 产出宝可梦:</strong> 皮卡丘、喵喵、小拉达
+                    </div>
+                    <button class="btn" style="margin-top: 15px;" onclick="toggleRecipeDetails(4)" id="recipe-btn-4">查看详情 ▼</button>
+                    <div id="recipe-details-4" style="display: none; margin-top: 15px;">
+                        <p><strong>摆放建议:</strong> 建筑物作为背景，路灯和长椅营造街道氛围</p>
+                        <p><strong>稀有度:</strong> ⭐⭐</p>
+                        <p><strong>维护成本:</strong> 低</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="data-section" id="advanced">
+                <h2>⭐ 高级栖息地配方</h2>
+                
+                <div class="recipe-card" id="5">
+                    <h3>❄️ 冰雪栖息地</h3>
+                    <p><strong>描述:</strong> 适合冰属性宝可梦的极地环境</p>
+                    <div class="recipe-items">
+                        <span class="recipe-item">❄️ 冰块 x4</span>
+                        <span class="recipe-item">🌨️ 雪堆 x6</span>
+                        <span class="recipe-item">🏔️ 冰山 x2</span>
+                    </div>
+                    <div class="recipe-output">
+                        <strong>🎁 产出宝可梦:</strong> 迷你龙、小海狮、迷唇娃
+                    </div>
+                    <button class="btn" style="margin-top: 15px;" onclick="toggleRecipeDetails(5)" id="recipe-btn-5">查看详情 ▼</button>
+                    <div id="recipe-details-5" style="display: none; margin-top: 15px;">
+                        <p><strong>摆放建议:</strong> 冰山作为背景，雪堆和冰块营造极地氛围</p>
+                        <p><strong>稀有度:</strong> ⭐⭐⭐⭐⭐</p>
+                        <p><strong>维护成本:</strong> 极高</p>
+                    </div>
+                </div>
+
+                <div class="recipe-card" id="6">
+                    <h3>⚡ 雷电栖息地</h3>
+                    <p><strong>描述:</strong> 适合电属性宝可梦的雷暴环境</p>
+                    <div class="recipe-items">
+                        <span class="recipe-item">⚡ 雷电发生器 x3</span>
+                        <span class="recipe-item">🔋 电池 x5</span>
+                        <span class="recipe-item">💡 霓虹灯 x4</span>
+                    </div>
+                    <div class="recipe-output">
+                        <strong>🎁 产出宝可梦:</strong> 皮卡丘、电击怪、小磁怪
+                    </div>
+                    <button class="btn" style="margin-top: 15px;" onclick="toggleRecipeDetails(6)" id="recipe-btn-6">查看详情 ▼</button>
+                    <div id="recipe-details-6" style="display: none; margin-top: 15px;">
+                        <p><strong>摆放建议:</strong> 雷电发生器均匀分布，霓虹灯增加视觉效果</p>
+                        <p><strong>稀有度:</strong> ⭐⭐⭐⭐</p>
+                        <p><strong>维护成本:</strong> 高</p>
+                    </div>
+                </div>
+
+                <div class="recipe-card" id="7">
+                    <h3>🌙 幽灵栖息地</h3>
+                    <p><strong>描述:</strong> 适合幽灵属性宝可梦的神秘环境</p>
+                    <div class="recipe-items">
+                        <span class="recipe-item">👻 幽灵石 x4</span>
+                        <span class="recipe-item">🕯️ 蜡烛 x6</span>
+                        <span class="recipe-item">🌙 月亮 x1</span>
+                    </div>
+                    <div class="recipe-output">
+                        <strong>🎁 产出宝可梦:</strong> 鬼斯、鬼斯通、耿鬼
+                    </div>
+                    <button class="btn" style="margin-top: 15px;" onclick="toggleRecipeDetails(7)" id="recipe-btn-7">查看详情 ▼</button>
+                    <div id="recipe-details-7" style="display: none; margin-top: 15px;">
+                        <p><strong>摆放建议:</strong> 月亮作为背景，蜡烛营造神秘氛围</p>
+                        <p><strong>稀有度:</strong> ⭐⭐⭐⭐⭐</p>
+                        <p><strong>维护成本:</strong> 极高</p>
+                    </div>
+                </div>
+
+                <div class="recipe-card" id="8">
+                    <h3>🌸 花园栖息地</h3>
+                    <p><strong>描述:</strong> 适合妖精属性宝可梦的花园环境</p>
+                    <div class="recipe-items">
+                        <span class="recipe-item">🌸 花朵 x8</span>
+                        <span class="recipe-item">🌳 树木 x4</span>
+                        <span class="recipe-item">🦋 蝴蝶装饰 x3</span>
+                    </div>
+                    <div class="recipe-output">
+                        <strong>🎁 产出宝可梦:</strong> 皮皮、胖丁、伊布
+                    </div>
+                    <button class="btn" style="margin-top: 15px;" onclick="toggleRecipeDetails(8)" id="recipe-btn-8">查看详情 ▼</button>
+                    <div id="recipe-details-8" style="display: none; margin-top: 15px;">
+                        <p><strong>摆放建议:</strong> 花朵密集摆放，树木作为背景，蝴蝶装饰增加活力</p>
+                        <p><strong>稀有度:</strong> ⭐⭐⭐</p>
+                        <p><strong>维护成本:</strong> 中</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="data-section" id="tips">
+                <h2>💡 栖息地建设技巧</h2>
+                <div class="data-card" style="margin-bottom: 20px;">
+                    <h3>🎯 提高产出的技巧</h3>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>保持栖息地的清洁度，定期清理杂物</li>
+                        <li>根据宝可梦的喜好调整家具摆放位置</li>
+                        <li>升级家具可以提高产出稀有宝可梦的概率</li>
+                        <li>不同季节可以更换装饰品，吸引季节限定宝可梦</li>
+                    </ul>
+                </div>
+                <div class="data-card">
+                    <h3>⚠️ 注意事项</h3>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>某些高级栖息地需要达到一定等级才能解锁</li>
+                        <li>栖息地需要定期维护，否则产出会下降</li>
+                        <li>不同属性的栖息地之间会产生相互影响</li>
+                        <li>稀有宝可梦的出现概率较低，需要耐心</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 宝可梦游戏攻略文档 | 本地访问版本</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

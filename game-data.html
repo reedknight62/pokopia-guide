@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏数据 - 宝可梦游戏攻略</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎮 宝可梦游戏攻略</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索游戏内容..." class="search-input">
+                <button class="search-btn" onclick="performSearch()">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="game-data.html" class="nav-link active">游戏数据</a></li>
+                <li><a href="habitat-recipes.html" class="nav-link">栖息地配方</a></li>
+                <li><a href="gallery.html" class="nav-link">图片展示</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <section class="data-section" id="pokemon-list">
+                <h2>📊 宝可梦图鉴</h2>
+                <div class="filter-controls">
+                    <button class="btn" onclick="filterByType('all')">全部</button>
+                    <button class="btn" onclick="filterByType('电')">电属性</button>
+                    <button class="btn" onclick="filterByType('火')">火属性</button>
+                    <button class="btn" onclick="filterByType('水')">水属性</button>
+                    <button class="btn" onclick="filterByType('草')">草属性</button>
+                    <button class="btn" onclick="filterByType('一般')">一般属性</button>
+                    <button class="btn" onclick="filterByType('超能力')">超能力</button>
+                </div>
+                <div class="sort-controls" style="margin-top: 15px;">
+                    <button class="btn" onclick="sortByName()">按名称排序</button>
+                    <button class="btn" onclick="sortByType()">按类型排序</button>
+                </div>
+                <div class="data-grid" style="margin-top: 20px;">
+                    <div class="data-card" data-type="电" id="1">
+                        <h3>⚡ 皮卡丘</h3>
+                        <p><strong>类型:</strong> 电</p>
+                        <p><strong>描述:</strong> 著名的电属性宝可梦，脸颊两侧有电力袋</p>
+                        <p><strong>特性:</strong> 静电</p>
+                    </div>
+                    <div class="data-card" data-type="火" id="2">
+                        <h3>🔥 小火龙</h3>
+                        <p><strong>类型:</strong> 火</p>
+                        <p><strong>描述:</strong> 尾巴上的火焰代表它的健康状况</p>
+                        <p><strong>特性:</strong> 猛火</p>
+                    </div>
+                    <div class="data-card" data-type="水" id="3">
+                        <h3>💧 杰尼龟</h3>
+                        <p><strong>类型:</strong> 水</p>
+                        <p><strong>描述:</strong> 龟壳非常坚硬，可以保护身体</p>
+                        <p><strong>特性:</strong> 激流</p>
+                    </div>
+                    <div class="data-card" data-type="草" id="4">
+                        <h3>🌿 妙蛙种子</h3>
+                        <p><strong>类型:</strong> 草</p>
+                        <p><strong>描述:</strong> 背上的种子会随着成长而长大</p>
+                        <p><strong>特性:</strong> 茂盛</p>
+                    </div>
+                    <div class="data-card" data-type="一般" id="5">
+                        <h3>🦊 伊布</h3>
+                        <p><strong>类型:</strong> 一般</p>
+                        <p><strong>描述:</strong> 拥有不稳定的遗传基因，可以进化成多种形态</p>
+                        <p><strong>特性:</strong> 逃跑</p>
+                    </div>
+                    <div class="data-card" data-type="超能力" id="6">
+                        <h3>🧠 超梦</h3>
+                        <p><strong>类型:</strong> 超能力</p>
+                        <p><strong>描述:</strong> 通过基因工程创造的人造宝可梦</p>
+                        <p><strong>特性:</strong> 压迫感</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="data-section" id="items">
+                <h2>🎒 道具列表</h2>
+                <div class="data-grid">
+                    <div class="data-card" data-type="道具">
+                        <h3>🔴 精灵球</h3>
+                        <p><strong>类型:</strong> 道具</p>
+                        <p><strong>描述:</strong> 用于捕捉和储存宝可梦的基本球</p>
+                        <p><strong>效果:</strong> 捕捉率 1x</p>
+                    </div>
+                    <div class="data-card" data-type="回复道具">
+                        <h3>💊 伤药</h3>
+                        <p><strong>类型:</strong> 回复道具</p>
+                        <p><strong>描述:</strong> 回复宝可梦20点HP</p>
+                        <p><strong>效果:</strong> HP +20</p>
+                    </div>
+                    <div class="data-card" data-type="回复道具">
+                        <h3>💊 好伤药</h3>
+                        <p><strong>类型:</strong> 回复道具</p>
+                        <p><strong>描述:</strong> 回复宝可梦50点HP</p>
+                        <p><strong>效果:</strong> HP +50</p>
+                    </div>
+                    <div class="data-card" data-type="回复道具">
+                        <h3>💊 超级伤药</h3>
+                        <p><strong>类型:</strong> 回复道具</p>
+                        <p><strong>描述:</strong> 回复宝可梦200点HP</p>
+                        <p><strong>效果:</strong> HP +200</p>
+                    </div>
+                    <div class="data-card" data-type="状态回复">
+                        <h3>🧪 解毒药</h3>
+                        <p><strong>类型:</strong> 状态回复</p>
+                        <p><strong>描述:</strong> 解除宝可梦的中毒状态</p>
+                        <p><strong>效果:</strong> 解除中毒</p>
+                    </div>
+                    <div class="data-card" data-type="状态回复">
+                        <h3>🧪 万能药</h3>
+                        <p><strong>类型:</strong> 状态回复</p>
+                        <p><strong>描述:</strong> 解除宝可梦的所有异常状态</p>
+                        <p><strong>效果:</strong> 解除所有异常状态</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="data-section" id="stats">
+                <h2>📈 游戏统计数据</h2>
+                <div class="data-card" style="margin-bottom: 20px;">
+                    <h3>当前版本信息</h3>
+                    <p><strong>版本号:</strong> v1.0.0</p>
+                    <p><strong>最后更新:</strong> 2024年3月</p>
+                    <p><strong>宝可梦数量:</strong> 6种（示例数据）</p>
+                    <p><strong>道具数量:</strong> 6种（示例数据）</p>
+                </div>
+                <div class="data-card">
+                    <h3>属性相性表</h3>
+                    <p><strong>火 ➔ 草:</strong> 效果拔群 (2x)</p>
+                    <p><strong>水 ➔ 火:</strong> 效果拔群 (2x)</p>
+                    <p><strong>草 ➔ 水:</strong> 效果拔群 (2x)</p>
+                    <p><strong>电 ➔ 水:</strong> 效果拔群 (2x)</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 宝可梦游戏攻略文档 | 本地访问版本</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

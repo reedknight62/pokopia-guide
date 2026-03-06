@@ -3,15 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>游戏数据 - 宝可梦游戏攻略</title>
+    <title>宝可梦列表 - 宝可梦游戏攻略</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .filter-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        
+        .filter-group h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover {
+            border-color: #4ecdc4;
+            background: #e8f8f8;
+        }
+        
+        .filter-btn.active {
+            background: #4ecdc4;
+            color: white;
+            border-color: #4ecdc4;
+        }
+        
+        .pokemon-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .pokemon-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pokemon-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .pokemon-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            flex: 1;
+        }
+        
+        .pokemon-type {
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .pokemon-type.草 {
+            background: #78c850;
+            color: white;
+        }
+        
+        .pokemon-type.火 {
+            background: #f08030;
+            color: white;
+        }
+        
+        .pokemon-type.水 {
+            background: #6890f0;
+            color: white;
+        }
+        
+        .pokemon-type.电 {
+            background: #f8d030;
+            color: white;
+        }
+        
+        .pokemon-type.一般 {
+            background: #a8a878;
+            color: white;
+        }
+        
+        .pokemon-type.虫 {
+            background: #a8b820;
+            color: white;
+        }
+        
+        .pokemon-type.格斗 {
+            background: #c03028;
+            color: white;
+        }
+        
+        .pokemon-type.毒 {
+            background: #a040a0;
+            color: white;
+        }
+        
+        .pokemon-type.地面 {
+            background: #e0c068;
+            color: white;
+        }
+        
+        .pokemon-type.岩石 {
+            background: #b8a038;
+            color: white;
+        }
+        
+        .pokemon-type.幽灵 {
+            background: #705898;
+            color: white;
+        }
+        
+        .pokemon-type.超能力 {
+            background: #f85888;
+            color: white;
+        }
+        
+        .pokemon-type.龙 {
+            background: #7038f8;
+            color: white;
+        }
+        
+        .pokemon-type.钢 {
+            background: #b8b8d0;
+            color: white;
+        }
+        
+        .pokemon-conditions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .condition-tag {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            background: #e8f8f8;
+            color: #2c3e50;
+        }
+        
+        .condition-tag.time-tag {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .condition-tag.weather-tag {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .condition-tag.region-tag {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .habitat-list {
+            margin-top: 15px;
+        }
+        
+        .habitat-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .habitat-item:hover {
+            background: #e9ecef;
+        }
+        
+        .habitat-name {
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .habitat-recipe {
+            display: none;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .habitat-recipe.show {
+            display: block;
+        }
+        
+        .recipe-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .recipe-item {
+            padding: 5px 12px;
+            background: #4ecdc4;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .filter-buttons {
+                gap: 6px;
+            }
+            
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
         <div class="container">
             <h1 class="logo">🎮 宝可梦游戏攻略</h1>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜索游戏内容..." class="search-input">
+                <input type="text" id="searchInput" placeholder="搜索宝可梦..." class="search-input">
                 <button class="search-btn" onclick="performSearch()">🔍</button>
             </div>
         </div>
@@ -21,7 +265,7 @@
         <div class="container">
             <ul class="nav-list">
                 <li><a href="index.html" class="nav-link">首页</a></li>
-                <li><a href="game-data.html" class="nav-link active">游戏数据</a></li>
+                <li><a href="game-data.html" class="nav-link active">宝可梦列表</a></li>
                 <li><a href="habitat-recipes.html" class="nav-link">栖息地配方</a></li>
                 <li><a href="gallery.html" class="nav-link">图片展示</a></li>
             </ul>
@@ -30,119 +274,57 @@
 
     <main class="main">
         <div class="container">
+            <section class="data-section" id="intro">
+                <h2>📊 宝可梦列表</h2>
+                <p>查看所有宝可梦及其出现的栖息地。点击栖息地可查看配方详情。</p>
+            </section>
+
+            <section class="data-section" id="filters">
+                <h2>🔍 筛选条件</h2>
+                
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <h4>⏰ 时间筛选</h4>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="time" data-value="all">全部</button>
+                            <button class="filter-btn" data-filter="time" data-value="Morning">🌅 上午</button>
+                            <button class="filter-btn" data-filter="time" data-value="Day">☀️ 白天</button>
+                            <button class="filter-btn" data-filter="time" data-value="Evening">🌆 傍晚</button>
+                            <button class="filter-btn" data-filter="time" data-value="Night">🌙 夜晚</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>🌤️ 天气筛选</h4>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="weather" data-value="all">全部</button>
+                            <button class="filter-btn" data-filter="weather" data-value="Sun">☀️ 晴天</button>
+                            <button class="filter-btn" data-filter="weather" data-value="Clouds">☁️ 多云</button>
+                            <button class="filter-btn" data-filter="weather" data-value="Rain">🌧️ 雨天</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>🗺️ 地区筛选</h4>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="region" data-value="all">全部</button>
+                            <button class="filter-btn" data-filter="region" data-value="真新镇">🏘️ 真新镇</button>
+                            <button class="filter-btn" data-filter="region" data-value="枯萎荒原">🏜️ 枯萎荒原</button>
+                            <button class="filter-btn" data-filter="region" data-value="天空群岛">🏝️ 天空群岛</button>
+                            <button class="filter-btn" data-filter="region" data-value="东海">🌊 东海</button>
+                            <button class="filter-btn" data-filter="region" data-value="西海">🌊 西海</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <button class="btn" onclick="clearFilters()">🔄 清除筛选</button>
+                    </div>
+                </div>
+            </section>
+
             <section class="data-section" id="pokemon-list">
-                <h2>📊 宝可梦图鉴</h2>
-                <div class="filter-controls">
-                    <button class="btn" onclick="filterByType('all')">全部</button>
-                    <button class="btn" onclick="filterByType('电')">电属性</button>
-                    <button class="btn" onclick="filterByType('火')">火属性</button>
-                    <button class="btn" onclick="filterByType('水')">水属性</button>
-                    <button class="btn" onclick="filterByType('草')">草属性</button>
-                    <button class="btn" onclick="filterByType('一般')">一般属性</button>
-                    <button class="btn" onclick="filterByType('超能力')">超能力</button>
-                </div>
-                <div class="sort-controls" style="margin-top: 15px;">
-                    <button class="btn" onclick="sortByName()">按名称排序</button>
-                    <button class="btn" onclick="sortByType()">按类型排序</button>
-                </div>
-                <div class="data-grid" style="margin-top: 20px;">
-                    <div class="data-card" data-type="电" id="1">
-                        <h3>⚡ 皮卡丘</h3>
-                        <p><strong>类型:</strong> 电</p>
-                        <p><strong>描述:</strong> 著名的电属性宝可梦，脸颊两侧有电力袋</p>
-                        <p><strong>特性:</strong> 静电</p>
-                    </div>
-                    <div class="data-card" data-type="火" id="2">
-                        <h3>🔥 小火龙</h3>
-                        <p><strong>类型:</strong> 火</p>
-                        <p><strong>描述:</strong> 尾巴上的火焰代表它的健康状况</p>
-                        <p><strong>特性:</strong> 猛火</p>
-                    </div>
-                    <div class="data-card" data-type="水" id="3">
-                        <h3>💧 杰尼龟</h3>
-                        <p><strong>类型:</strong> 水</p>
-                        <p><strong>描述:</strong> 龟壳非常坚硬，可以保护身体</p>
-                        <p><strong>特性:</strong> 激流</p>
-                    </div>
-                    <div class="data-card" data-type="草" id="4">
-                        <h3>🌿 妙蛙种子</h3>
-                        <p><strong>类型:</strong> 草</p>
-                        <p><strong>描述:</strong> 背上的种子会随着成长而长大</p>
-                        <p><strong>特性:</strong> 茂盛</p>
-                    </div>
-                    <div class="data-card" data-type="一般" id="5">
-                        <h3>🦊 伊布</h3>
-                        <p><strong>类型:</strong> 一般</p>
-                        <p><strong>描述:</strong> 拥有不稳定的遗传基因，可以进化成多种形态</p>
-                        <p><strong>特性:</strong> 逃跑</p>
-                    </div>
-                    <div class="data-card" data-type="超能力" id="6">
-                        <h3>🧠 超梦</h3>
-                        <p><strong>类型:</strong> 超能力</p>
-                        <p><strong>描述:</strong> 通过基因工程创造的人造宝可梦</p>
-                        <p><strong>特性:</strong> 压迫感</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="data-section" id="items">
-                <h2>🎒 道具列表</h2>
-                <div class="data-grid">
-                    <div class="data-card" data-type="道具">
-                        <h3>🔴 精灵球</h3>
-                        <p><strong>类型:</strong> 道具</p>
-                        <p><strong>描述:</strong> 用于捕捉和储存宝可梦的基本球</p>
-                        <p><strong>效果:</strong> 捕捉率 1x</p>
-                    </div>
-                    <div class="data-card" data-type="回复道具">
-                        <h3>💊 伤药</h3>
-                        <p><strong>类型:</strong> 回复道具</p>
-                        <p><strong>描述:</strong> 回复宝可梦20点HP</p>
-                        <p><strong>效果:</strong> HP +20</p>
-                    </div>
-                    <div class="data-card" data-type="回复道具">
-                        <h3>💊 好伤药</h3>
-                        <p><strong>类型:</strong> 回复道具</p>
-                        <p><strong>描述:</strong> 回复宝可梦50点HP</p>
-                        <p><strong>效果:</strong> HP +50</p>
-                    </div>
-                    <div class="data-card" data-type="回复道具">
-                        <h3>💊 超级伤药</h3>
-                        <p><strong>类型:</strong> 回复道具</p>
-                        <p><strong>描述:</strong> 回复宝可梦200点HP</p>
-                        <p><strong>效果:</strong> HP +200</p>
-                    </div>
-                    <div class="data-card" data-type="状态回复">
-                        <h3>🧪 解毒药</h3>
-                        <p><strong>类型:</strong> 状态回复</p>
-                        <p><strong>描述:</strong> 解除宝可梦的中毒状态</p>
-                        <p><strong>效果:</strong> 解除中毒</p>
-                    </div>
-                    <div class="data-card" data-type="状态回复">
-                        <h3>🧪 万能药</h3>
-                        <p><strong>类型:</strong> 状态回复</p>
-                        <p><strong>描述:</strong> 解除宝可梦的所有异常状态</p>
-                        <p><strong>效果:</strong> 解除所有异常状态</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="data-section" id="stats">
-                <h2>📈 游戏统计数据</h2>
-                <div class="data-card" style="margin-bottom: 20px;">
-                    <h3>当前版本信息</h3>
-                    <p><strong>版本号:</strong> v1.0.0</p>
-                    <p><strong>最后更新:</strong> 2024年3月</p>
-                    <p><strong>宝可梦数量:</strong> 6种（示例数据）</p>
-                    <p><strong>道具数量:</strong> 6种（示例数据）</p>
-                </div>
-                <div class="data-card">
-                    <h3>属性相性表</h3>
-                    <p><strong>火 ➔ 草:</strong> 效果拔群 (2x)</p>
-                    <p><strong>水 ➔ 火:</strong> 效果拔群 (2x)</p>
-                    <p><strong>草 ➔ 水:</strong> 效果拔群 (2x)</p>
-                    <p><strong>电 ➔ 水:</strong> 效果拔群 (2x)</p>
-                </div>
+                <h2>🦎 宝可梦</h2>
+                <div id="pokemonContainer"></div>
             </section>
         </div>
     </main>
@@ -153,6 +335,249 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="habitats-data.js"></script>
+    <script>
+        let currentFilters = {
+            time: 'all',
+            weather: 'all',
+            region: 'all'
+        };
+
+        function buildPokemonData() {
+            const pokemonMap = new Map();
+            
+            habitatsData.forEach(habitat => {
+                habitat.pokemon.forEach(pokemon => {
+                    if (!pokemonMap.has(pokemon.name)) {
+                        pokemonMap.set(pokemon.name, {
+                            name: pokemon.name,
+                            type: pokemon.type,
+                            habitats: []
+                        });
+                    }
+                    
+                    pokemonMap.get(pokemon.name).habitats.push({
+                        habitatName: habitat.name,
+                        conditions: habitat.conditions,
+                        time: pokemon.time,
+                        weather: pokemon.weather,
+                        region: pokemon.region
+                    });
+                });
+            });
+            
+            return Array.from(pokemonMap.values()).sort((a, b) => a.name.localeCompare(b.name));
+        }
+
+        function renderPokemonList() {
+            const container = document.getElementById('pokemonContainer');
+            const pokemonData = buildPokemonData();
+            
+            let filteredPokemon = pokemonData.filter(pokemon => {
+                return pokemon.habitats.some(h => {
+                    return checkHabitatFilters(h);
+                });
+            });
+
+            if (filteredPokemon.length === 0) {
+                container.innerHTML = '<div class="no-results">没有找到符合条件的宝可梦</div>';
+                return;
+            }
+
+            container.innerHTML = filteredPokemon.map(pokemon => {
+                const filteredHabitats = pokemon.habitats.filter(h => {
+                    return checkHabitatFilters(h);
+                });
+
+                if (filteredHabitats.length === 0) return '';
+
+                const habitatsHTML = filteredHabitats.map((h, index) => {
+                    const conditionsTags = [];
+                    if (h.time.length > 0) {
+                        conditionsTags.push(`<span class="condition-tag time-tag">⏰ ${h.time.join(', ')}</span>`);
+                    }
+                    if (h.weather.length > 0) {
+                        conditionsTags.push(`<span class="condition-tag weather-tag">🌤️ ${h.weather.join(', ')}</span>`);
+                    }
+                    if (h.region.length > 0) {
+                        conditionsTags.push(`<span class="condition-tag region-tag">🗺️ ${h.region.join(', ')}</span>`);
+                    }
+
+                    const recipeItems = h.conditions.map(c => {
+                        return `<span class="recipe-item">${c.emoji} ${c.name} x${c.quantity}</span>`;
+                    }).join('');
+
+                    return `
+                        <div class="habitat-item" onclick="toggleRecipe(${index}, '${pokemon.name}')">
+                            <div class="habitat-name">🏠 ${h.habitatName}</div>
+                            <div class="pokemon-conditions">
+                                ${conditionsTags.join('')}
+                            </div>
+                            <div class="habitat-recipe" id="recipe-${pokemon.name}-${index}">
+                                <div class="recipe-items">
+                                    ${recipeItems}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="pokemon-card">
+                        <div class="pokemon-header">
+                            <div class="pokemon-name">${pokemon.name}</div>
+                            <span class="pokemon-type ${pokemon.type}">${pokemon.type}</span>
+                        </div>
+                        <div class="habitat-list">
+                            ${habitatsHTML}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function checkHabitatFilters(habitat) {
+            if (currentFilters.time !== 'all' && habitat.time.length > 0) {
+                if (!habitat.time.includes(currentFilters.time)) {
+                    return false;
+                }
+            }
+            
+            if (currentFilters.weather !== 'all' && habitat.weather.length > 0) {
+                if (!habitat.weather.includes(currentFilters.weather)) {
+                    return false;
+                }
+            }
+            
+            if (currentFilters.region !== 'all' && habitat.region.length > 0) {
+                if (!habitat.region.includes(currentFilters.region)) {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        function toggleRecipe(index, pokemonName) {
+            const recipe = document.getElementById(`recipe-${pokemonName}-${index}`);
+            recipe.classList.toggle('show');
+        }
+
+        function setFilter(filterType, value) {
+            currentFilters[filterType] = value;
+            
+            document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            
+            renderPokemonList();
+        }
+
+        function clearFilters() {
+            currentFilters = {
+                time: 'all',
+                weather: 'all',
+                region: 'all'
+            };
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.querySelectorAll('[data-value="all"]').forEach(btn => {
+                btn.classList.add('active');
+            });
+            
+            renderPokemonList();
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            if (!query) {
+                renderPokemonList();
+                return;
+            }
+            
+            const container = document.getElementById('pokemonContainer');
+            const pokemonData = buildPokemonData();
+            
+            const filteredPokemon = pokemonData.filter(pokemon => {
+                return pokemon.name.toLowerCase().includes(query) || 
+                       pokemon.type.toLowerCase().includes(query) ||
+                       pokemon.habitats.some(h => h.habitatName.toLowerCase().includes(query));
+            });
+
+            if (filteredPokemon.length === 0) {
+                container.innerHTML = '<div class="no-results">没有找到符合条件的宝可梦</div>';
+                return;
+            }
+
+            container.innerHTML = filteredPokemon.map(pokemon => {
+                const habitatsHTML = pokemon.habitats.map((h, index) => {
+                    const conditionsTags = [];
+                    if (h.time.length > 0) {
+                        conditionsTags.push(`<span class="condition-tag time-tag">⏰ ${h.time.join(', ')}</span>`);
+                    }
+                    if (h.weather.length > 0) {
+                        conditionsTags.push(`<span class="condition-tag weather-tag">🌤️ ${h.weather.join(', ')}</span>`);
+                    }
+                    if (h.region.length > 0) {
+                        conditionsTags.push(`<span class="condition-tag region-tag">🗺️ ${h.region.join(', ')}</span>`);
+                    }
+
+                    const recipeItems = h.conditions.map(c => {
+                        return `<span class="recipe-item">${c.emoji} ${c.name} x${c.quantity}</span>`;
+                    }).join('');
+
+                    return `
+                        <div class="habitat-item" onclick="toggleRecipe(${index}, '${pokemon.name}')">
+                            <div class="habitat-name">🏠 ${h.habitatName}</div>
+                            <div class="pokemon-conditions">
+                                ${conditionsTags.join('')}
+                            </div>
+                            <div class="habitat-recipe" id="recipe-${pokemon.name}-${index}">
+                                <div class="recipe-items">
+                                    ${recipeItems}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="pokemon-card">
+                        <div class="pokemon-header">
+                            <div class="pokemon-name">${pokemon.name}</div>
+                            <span class="pokemon-type ${pokemon.type}">${pokemon.type}</span>
+                        </div>
+                        <div class="habitat-list">
+                            ${habitatsHTML}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPokemonList();
+
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filterType = this.getAttribute('data-filter');
+                    const value = this.getAttribute('data-value');
+                    setFilter(filterType, value);
+                });
+            });
+
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
